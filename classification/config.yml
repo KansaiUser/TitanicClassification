@@ -1,0 +1,28 @@
+# Package overview
+package_name: classification
+# Variables
+# The variable we are attempting to predict (survived)
+target: survived
+
+data_source: 'https://www.openml.org/data/get_csv/16826755/phpMYEkMl'
+
+pipeline_save_file: classification_model_output_v
+
+# to set the random seed
+random_state: 0
+
+# For logistic regression
+c_value: 0.0005
+
+numerical_variables:
+  - age
+  - fare
+
+categorical_variables:
+  - sex
+  - cabin
+  - embarked
+  - title
+
+cabin:
+  - cabin
