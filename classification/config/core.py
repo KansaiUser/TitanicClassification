@@ -27,6 +27,9 @@ class Config(BaseModel):
     app_config: AppConfig
 
 
+_config_instance = None
+
+
 def fetch_config_from_yaml(cfg_path:Optional[Path]= None)-> YAML:
     if not cfg_path:
         pass
@@ -54,6 +57,9 @@ def create_and_validate_config(parsed_config: YAML = None) -> Config:
     )
     return _config
 
+def get_config() -> Config:
+    global _config_instance
+    if _config_instance is None:
+        _config_instance = create_and_validate_config()
+    return _config_instance
 
-config = create_and_validate_config()
-print(f"Config: {config}")
