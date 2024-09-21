@@ -29,10 +29,15 @@ class Config(BaseModel):
 
 _config_instance = None
 
+def find_config_file() -> Path:
+    """Locate the configuration file."""
+    if CONFIG_FILE_PATH.is_file():
+        return CONFIG_FILE_PATH
+    raise Exception(f"Config not found at {CONFIG_FILE_PATH!r}")
 
 def fetch_config_from_yaml(cfg_path:Optional[Path]= None)-> YAML:
     if not cfg_path:
-        pass
+        cfg_path = find_config_file()
     if cfg_path:
         print("Opening and reading Yaml")
         with open(cfg_path,"r")as conf_file:
@@ -41,14 +46,10 @@ def fetch_config_from_yaml(cfg_path:Optional[Path]= None)-> YAML:
             return parsed_config
     raise OSError(f"Did not find config file at path: {cfg_path}")
     
-
-
 def create_and_validate_config(parsed_config: YAML = None) -> Config:
     if parsed_config is None:
         print("Parsed config is None")
-        # this is just temporal
-        path_to_config = Path(CONFIG_FILE_PATH)
-        parsed_config = fetch_config_from_yaml(path_to_config)
+        parsed_config = fetch_config_from_yaml()
 
         print(parsed_config.data)
 
