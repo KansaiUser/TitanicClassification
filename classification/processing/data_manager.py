@@ -4,12 +4,6 @@ import numpy as np
 
 from classification.config.core import get_config,DATASET_DIR
 
-# def load_dataset(source):
-#     df = pd.read_csv(source)
-#     # replace interrogation marks by NaN values
-#     data = data.replace('?', np.nan)
-#     # Should we put more pre-processing here?
-
 config = get_config()
 
 def load_dataset(reread:bool):
