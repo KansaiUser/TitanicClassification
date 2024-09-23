@@ -5,6 +5,7 @@ package_name: classification
 target: survived
 
 data_source: 'https://www.openml.org/data/get_csv/16826755/phpMYEkMl'
+saved_data: 'titanic.csv'
 
 pipeline_save_file: classification_model_output_v
 

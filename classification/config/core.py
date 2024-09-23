@@ -17,10 +17,12 @@ TRAINED_MODEL_DIR = PACKAGE_ROOT / "trained_models"
 
 print(f"Package root from core {PACKAGE_ROOT}")
 print(f"Config file path {CONFIG_FILE_PATH}")
+print(f"Data source to be saved in {DATASET_DIR}  ")
 
 class AppConfig(BaseModel):
     package_name: str
     data_source: str
+    saved_data: str
     pipeline_save_file: str
 
 class Config(BaseModel):
@@ -42,7 +44,7 @@ def fetch_config_from_yaml(cfg_path:Optional[Path]= None)-> YAML:
         print("Opening and reading Yaml")
         with open(cfg_path,"r")as conf_file:
             parsed_config = load(conf_file.read())
-            print(f"parsed config type {type(parsed_config)}")
+            # print(f"parsed config type {type(parsed_config)}")
             return parsed_config
     raise OSError(f"Did not find config file at path: {cfg_path}")
     
