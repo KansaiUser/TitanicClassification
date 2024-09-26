@@ -9,3 +9,6 @@ The preliminary artice (that actually uses other repo) is
 The current article is
 
 - [Incrementally building a ML repo: reading a config file](https://medium.com/@hitorunajp/incrementally-building-a-ml-repo-reading-a-config-file-efb1f75bd41e)
+
+- [Incrementally building a ML repo: reading the Data](https://medium.com/@hitorunajp/incrementally-building-a-ml-repo-reading-the-data-8e327934d46c)
+
