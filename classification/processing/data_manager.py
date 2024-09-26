@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 
 from classification.config.core import get_config,DATASET_DIR
+from classification.processing.auxiliar import get_first_cabin, get_title
 
 config = get_config()
 
@@ -17,6 +18,14 @@ def load_dataset(reread:bool):
         # replace interrogation marks by NaN values
         data = data.replace('?', np.nan)
         # Other preprocessing here
+
+        data['cabin'] = data['cabin'].apply(get_first_cabin)
+        data['title'] = data['name'].apply(get_title)
+
+        data['fare'] = data['fare'].astype('float')
+        data['age'] = data['age'].astype('float')
+        # drop unnecessary variables
+        data.drop(labels=['name','ticket', 'boat', 'body','home.dest'], axis=1, inplace=True)
 
         # Then save the file
         data.to_csv(saved_path, index=False)
