@@ -25,8 +25,15 @@ class AppConfig(BaseModel):
     saved_data: str
     pipeline_save_file: str
 
+class ModelConfig(BaseModel):
+    target: str
+    random_state: int
+    test_size: float
+
+
 class Config(BaseModel):
     app_config: AppConfig
+    themodel_config: ModelConfig
 
 
 _config_instance = None
@@ -56,7 +63,8 @@ def create_and_validate_config(parsed_config: YAML = None) -> Config:
         print(parsed_config.data)
 
     _config = Config(
-        app_config=AppConfig(**parsed_config.data)
+        app_config=AppConfig(**parsed_config.data),
+        themodel_config = ModelConfig(**parsed_config.data)
     )
     return _config
 

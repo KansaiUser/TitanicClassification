@@ -12,6 +12,8 @@ pipeline_save_file: classification_model_output_v
 # to set the random seed
 random_state: 0
 
+test_size: 0.2
+
 # For logistic regression
 c_value: 0.0005
 
