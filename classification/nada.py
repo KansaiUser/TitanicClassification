@@ -16,13 +16,13 @@ def run(reread:bool)-> None:
 
     print(config)
 
-    # X_train, X_test, y_train, y_test = train_test_split(
-    # data.drop(config.model_config.target, axis=1),  # predictors
-    # data[config.model_config.target],  # target
-    # test_size=0.2,  # percentage of obs in test set
-    # random_state=0)  # seed to ensure reproducibility
+    X_train, X_test, y_train, y_test = train_test_split(
+    data.drop(config.themodel_config.target, axis=1),  # predictors
+    data[config.themodel_config.target],  # target
+    test_size=config.themodel_config.test_size,  # percentage of obs in test set
+    random_state=config.themodel_config.random_state)  # seed to ensure reproducibility
 
-    # print(f" Xtrain shape {X_train.shape} ,Xtest shape {X_test.shape}")
+    print(f" Xtrain shape {X_train.shape} ,Xtest shape {X_test.shape}")
 
 
 
