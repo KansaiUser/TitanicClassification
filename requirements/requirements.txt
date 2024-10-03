@@ -2,3 +2,6 @@ pydantic
 strictyaml
 pandas
 scikit-learn
+loguru
+joblib
+feature-engine
