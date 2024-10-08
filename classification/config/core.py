@@ -30,6 +30,8 @@ class ModelConfig(BaseModel):
     random_state: int
     test_size: float
     categorical_variables : List[str]
+    numerical_variables: List[str]
+    cabin: List[str]
 
 
 class Config(BaseModel):
