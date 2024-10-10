@@ -79,6 +79,10 @@ def save_trained_pipeline(pipe,name):
     joblib.dump(pipe, name)
 
 def get_trained_pipeline(name):
+    pname = Path(name)
+    if pname.suffix != '.joblib':
+        # Append .joblib to the existing name
+        name = str(pname) + '.joblib'
     if not Path(name).is_file():
         logger.error(f"{name} pipeline file does not exist!")
         return None
