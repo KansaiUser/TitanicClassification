@@ -80,6 +80,6 @@ def save_trained_pipeline(pipe,name):
 
 def get_trained_pipeline(name):
     if not Path(name).is_file():
-        logger.error("f{name} pipeline file does not exist!")
+        logger.error(f"{name} pipeline file does not exist!")
         return None
     return joblib.load(name)
