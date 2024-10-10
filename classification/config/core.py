@@ -15,9 +15,9 @@ TRAINED_MODEL_DIR = PACKAGE_ROOT / "trained_models"
 
 # SOURCE_DATA = 
 
-print(f"Package root from core {PACKAGE_ROOT}")
-print(f"Config file path {CONFIG_FILE_PATH}")
-print(f"Data source to be saved in {DATASET_DIR}  ")
+# print(f"Package root from core {PACKAGE_ROOT}")
+# print(f"Config file path {CONFIG_FILE_PATH}")
+# print(f"Data source to be saved in {DATASET_DIR}  ")
 
 class AppConfig(BaseModel):
     package_name: str
@@ -51,7 +51,7 @@ def fetch_config_from_yaml(cfg_path:Optional[Path]= None)-> YAML:
     if not cfg_path:
         cfg_path = find_config_file()
     if cfg_path:
-        print("Opening and reading Yaml")
+        # print("Opening and reading Yaml")
         with open(cfg_path,"r")as conf_file:
             parsed_config = load(conf_file.read())
             # print(f"parsed config type {type(parsed_config)}")
@@ -60,10 +60,10 @@ def fetch_config_from_yaml(cfg_path:Optional[Path]= None)-> YAML:
     
 def create_and_validate_config(parsed_config: YAML = None) -> Config:
     if parsed_config is None:
-        print("Parsed config is None")
+        # print("Parsed config is None")
         parsed_config = fetch_config_from_yaml()
 
-        print(parsed_config.data)
+        # print(parsed_config.data)
 
     _config = Config(
         app_config=AppConfig(**parsed_config.data),

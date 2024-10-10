@@ -28,7 +28,11 @@ def run(reread:bool)-> None:
     test_size=config.themodel_config.test_size,  # percentage of obs in test set
     random_state=config.themodel_config.random_state)  # seed to ensure reproducibility
 
-    print(f" Xtrain shape {X_train.shape} ,Xtest shape {X_test.shape}")
+    # print(f" Xtrain shape {X_train.shape} ,Xtest shape {X_test.shape}")
+    # print("Train Data")
+    # print(X_train.head())
+    # print("Test Data")
+    # print(X_test.head())
 
     titanic_pipe = get_pipeline()
 
