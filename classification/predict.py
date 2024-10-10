@@ -5,13 +5,16 @@ from classification.pipeline import get_trained_pipeline
 from classification import __version__
 from classification.config.core import get_config
 from classification.processing.data_manager import pre_pipeline_preparation
+from pathlib import Path
 
 config = get_config()
 
 pipename = config.app_config.pipeline_save_file + __version__
 logger.info(f"The pipeline name is {pipename}")
+script_path = Path(__file__).parent
 
 def make_prediction(input_data: Union[pd.DataFrame, dict],is_cleaned: bool=False) -> dict:
+    global pipename
     data = pd.DataFrame(input_data)
     errors=""
     #If it is cleaned then skip the cleaning
@@ -23,6 +26,7 @@ def make_prediction(input_data: Union[pd.DataFrame, dict],is_cleaned: bool=False
     #Perhaps some validation here
 
     #pipeline predict
+    pipename=script_path/"models"/pipename
     tit_pipe= get_trained_pipeline(pipename)
     if tit_pipe is None:
         logger.error(f"{pipename} is not a valid Pipeline.")
@@ -73,3 +77,7 @@ input_data = pd.DataFrame(data)
 
 # Print the DataFrame for confirmation
 print(input_data)
+
+results = make_prediction(input_data)
+
+print(results)
