@@ -29,9 +29,11 @@ class ModelConfig(BaseModel):
     target: str
     random_state: int
     test_size: float
+    c_value: float
     categorical_variables : List[str]
     numerical_variables: List[str]
     cabin: List[str]
+    unused_fields: List[str]
 
 
 class Config(BaseModel):

@@ -29,3 +29,10 @@ categorical_variables:
 
 cabin:
   - cabin
+
+unused_fields:
+  - name
+  - ticket
+  - boat
+  - body
+  - home.dest

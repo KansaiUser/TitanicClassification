@@ -29,14 +29,6 @@ config = get_config()
 
 def get_pipeline():
     # set up the pipeline
-    # titanic_pipe = Pipeline([
-
-    #     # ===== IMPUTATION =====
-    #     # impute categorical variables with string missing
-    #     ('categorical_imputation', CategoricalImputer(
-    #         imputation_method='missing', variables=config.themodel_config.categorical_variables)),
-    # ])
-
     titanic_pipe = Pipeline([
 
     # ===== IMPUTATION =====
@@ -70,16 +62,24 @@ def get_pipeline():
     # scale
     ('scaler', StandardScaler()),
 
-    ('Logit', LogisticRegression(C=0.0005, random_state=0)),
+    ('Logit', LogisticRegression(C= config.themodel_config.c_value, random_state= config.themodel_config.random_state)),
     ])
 
     return titanic_pipe
 
-def save_pipeline(pipe,name):
-
-    if Path(name).suffix!='joblib':
-        pname=Path(name).with_suffix('.joblib')
-        name=str(pname)
+def save_trained_pipeline(pipe,name):
+    pname = Path(name)
+    
+    # Check if the suffix is already '.joblib'
+    if pname.suffix != '.joblib':
+        # Append .joblib to the existing name
+        name = str(pname) + '.joblib'
     
     logger.info(f"Save to {name}")
     joblib.dump(pipe, name)
+
+def get_trained_pipeline(name):
+    if not Path(name).is_file():
+        logger.error("f{name} pipeline file does not exist!")
+        return None
+    return joblib.load(name)
