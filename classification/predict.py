@@ -5,6 +5,7 @@ from classification.pipeline import get_trained_pipeline
 from classification import __version__
 from classification.config.core import get_config
 from classification.processing.data_manager import pre_pipeline_preparation
+from classification.processing.validate import validate_data
 from pathlib import Path
 
 config = get_config()
@@ -24,6 +25,8 @@ def make_prediction(input_data: Union[pd.DataFrame, dict],is_cleaned: bool=False
     #Now data is cleaned
 
     #Perhaps some validation here
+    data , errors = validate_data(data)   
+    # print(f"TYPE {type(data)}") 
 
     #pipeline predict
     pipename=script_path/"models"/pipename
