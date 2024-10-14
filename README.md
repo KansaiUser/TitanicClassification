@@ -15,3 +15,5 @@ The current articles of the series:
 - [Incrementally building a ML repo: Splitting the data and starting the pipeline](https://medium.com/@hitorunajp/incrementally-building-a-ml-repo-splitting-the-data-and-starting-the-pipeline-6da6c19f5bf5)
 
 - [Incrementally building a ML repo: completing the Pipeline](https://medium.com/@hitorunajp/incrementally-building-a-ml-repo-completing-the-pipeline-38d72a009c53)
+
+- [Incrementally building a ML repo: Adding precitions](https://medium.com/@hitorunajp/incrementally-building-a-ml-repo-adding-predictions-34d2977b654f1)
